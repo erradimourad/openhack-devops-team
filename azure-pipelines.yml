@@ -29,14 +29,6 @@ steps:
   inputs:
     command: 'custom'
     workingDir: '$(Build.SourcesDirectory)/apis/userprofile'
-    customCommand: 'run build'
-  displayName: 'build package'  
-
-
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    workingDir: '$(Build.SourcesDirectory)/apis/userprofile'
     customCommand: 'pack'
   displayName: 'Package for npm release'  
 
