@@ -7,7 +7,10 @@ trigger:
 - none
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: default
+  demands:
+  - npm
+  - node.js
 
 steps:
 - task: NodeTool@0
