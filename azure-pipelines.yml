@@ -15,20 +15,28 @@ steps:
     versionSpec: '8.x'
   displayName: 'Install Node.js'
 
-- script: |
-    inputs:
-      workingDir: apis/userprofile
-      verbose: true
-    npm install
-    npm run build
-  displayName: 'npm install and build'
-  
-- script: |
-    inputs:
-      workingDir: apis/userprofile
-      verbose: true
-    npm pack
-  displayName: 'Package for npm release'
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: 'api/userprofile'
+  displayName: 'Install npm packages'  
+
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'api/userprofile'
+    customCommand: 'run build'
+  displayName: 'build package'  
+
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'api/userprofile'
+    customCommand: 'pack'
+  displayName: 'Package for npm release'  
+
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)/apis/userprofile'
