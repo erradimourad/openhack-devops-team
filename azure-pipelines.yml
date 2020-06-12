@@ -16,13 +16,17 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    workingDir: '$(Build.SourcesDirectory)/apis/userprofile'
+    inputs:
+      workingDir: apis/userprofile
+      verbose: true
     npm install
     npm run build
   displayName: 'npm install and build'
   
 - script: |
-    workingDir: '$(Build.SourcesDirectory)/apis/userprofile'
+    inputs:
+      workingDir: apis/userprofile
+      verbose: true
     npm pack
   displayName: 'Package for npm release'
 - task: CopyFiles@2
