@@ -21,14 +21,14 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-    workingDir: '$(Build.SourcesDirectory)/api/userprofile'
+    workingDir: '$(Build.SourcesDirectory)/apis/userprofile'
   displayName: 'Install npm packages'  
 
 
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: '$(Build.SourcesDirectory)/api/userprofile'
+    workingDir: '$(Build.SourcesDirectory)/apis/userprofile'
     customCommand: 'run build'
   displayName: 'build package'  
 
@@ -36,7 +36,7 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: '$(Build.SourcesDirectory)/api/userprofile'
+    workingDir: '$(Build.SourcesDirectory)/apis/userprofile'
     customCommand: 'pack'
   displayName: 'Package for npm release'  
 
